@@ -1,5 +1,7 @@
 # Estación meteorológica IoT — CC3067
 
+[Entrega 10 de Noviembre 2026](Entrega10Nov.md)
+
 ## Arquitectura
 `Sensor simulado (producer.py) -> Kafka Broker -> consumer.py -> gráficas en vivo`
 
@@ -59,11 +61,3 @@ payload = packed.to_bytes(3, 'big')
 
 El campo `key=b'sensor1'` de Kafka **no forma parte de los 3 bytes del value**; Kafka añade sus propias cabeceras y metadatos. La restricción del laboratorio se interpreta como el tamaño del `value` (payload de aplicación).
 
-## Evidencias para Canvas
-1. Captura de las pruebas unitarias exitosas.
-2. Captura del productor JSON y consumidor con las tres gráficas.
-3. Captura del productor binario indicando `payload=3 bytes` y consumidor graficando los datos decodificados.
-4. Capturas del broker/terminal que permitan demostrar publicación y consumo reales.
-5. PDF con explicaciones y respuestas teóricas (archivo `respuestas.md`).
-
-**Nota sobre la distribución:** la guía dice literalmente “Distribución Uniforme (Normal)” pero también solicita valores centrados en 55 con varianza elegida. Son distribuciones distintas; este proyecto usa normal truncada con media subyacente 55, desviación 15 para temperatura y 18 para humedad, con valores limitados a sus rangos válidos. La media observada de humedad puede variar levemente por truncamiento y redondeo.
