@@ -60,7 +60,7 @@ def main():
                             item = json.loads(row)
                             if item['mode'] == args.mode:
                                 update(deserializar(bytes.fromhex(item['payload_hex']), args.mode), datetime.fromisoformat(item['ts']).astimezone())
-                        offset = f.tell()
+                        offset = f.seek(0, 2)
                 except FileNotFoundError:
                     pass
                 plt.pause(.5)

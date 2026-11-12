@@ -24,8 +24,8 @@ def main():
     parser.add_argument('--interval', type=float, default=20)
     parser.add_argument('--count', type=int, default=0, help='0 = sin límite')
     args = parser.parse_args()
-    if args.interval <= 0:
-        parser.error('--interval debe ser positivo')
+    if not 15 <= args.interval <= 30:
+        parser.error('--interval debe estar entre 15 y 30 segundos')
     producer = None if OFFLINE else KafkaProducer(bootstrap_servers=BOOTSTRAP.split(','), **kafka_security())
     print(f'Productor: topic={TOPIC}, modo={args.mode}, offline={OFFLINE}', flush=True)
     try:
